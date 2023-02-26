@@ -1,0 +1,51 @@
+.introduccion {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 5px;
+    animation: slideInUp 1s ease-out;
+  }
+  
+  @keyframes slideInUp {
+    from {
+      transform: translateY(50%);
+      opacity: 0;
+    }
+  
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .nombre {
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .apellido {
+    font-size: 36px;
+    font-weight: normal;
+    color: #555;
+    animation: fadeIn 1s ease-out 0.5s;
+  }
+  
+  .descripcion {
+    font-size: 24px;
+    font-weight: normal;
+    color: #777;
+    margin-top: 20px;
+    animation: fadeIn 1s ease-out 1s;
+    text-align: justify
+  }
