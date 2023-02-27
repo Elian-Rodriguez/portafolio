@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import * as contentful from "contentful";
 import './Education.css'
 const client = contentful.createClient({
