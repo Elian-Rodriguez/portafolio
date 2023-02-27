@@ -32,7 +32,11 @@ function Header() {
       setData(dataPersons[0]["fields"]);
     }
   }, [dataPersons]);
+  console.log("DATA")
+  console.log(data.foto.fields.file.url)
+  
   profileImagePublic =profileImage ;
+  if(data.foto.fields.file.url !=null){profileImagePublic=data.foto.fields.file.url}
 
   return (
     <header className="header">
