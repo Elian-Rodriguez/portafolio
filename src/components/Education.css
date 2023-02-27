@@ -1,0 +1,67 @@
+#education {
+    background-color: #f5f5f5;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  #education h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  #education h2 {
+    font-size: 24px;
+    margin-top: 0;
+  }
+  
+  #education .course {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  #education .course h3 {
+    font-size: 24px;
+    margin-top: 0;
+  }
+  
+  #education .course p {
+    margin: 10px 0;
+  }
+
+  .education h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+  }
+  .education button {
+    font-size: 24px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .education button:hover {
+    background-color: #fff;
+    color: #333;
+  }
+  ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(33%, 1fr));
+    grid-gap: 20px;
+  }
+  
+  li img {
+    width: 100%;
+    height: auto;
+  }

@@ -40,7 +40,7 @@ function Header() {
 
   // Actualiza la imagen de perfil si hay una URL de imagen disponible
   data.foto=profileImage;
-  console.log(data)
+  //console.log(data)
 
   // Renderiza el componente
   return (

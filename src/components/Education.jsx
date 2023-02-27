@@ -1,39 +1,52 @@
-import * as contentful from "contentful";
 import React, { useState, useEffect } from "react";
-import "./Education.css";
-
-
-
+import axios from "axios";
+import * as contentful from "contentful";
+import './Education.css'
 const client = contentful.createClient({
     space: "m50dx8rsupt2",
+    environment: "master",
     accessToken: "UchwU0LEtcJi9a7a5xHfK9WtrcWaBzVebcJKOmiIkAc",
-});
+    
+  });
 
 function Education() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
+  var cursosRealizados=null;
   const [expanded, setExpanded] = useState(true);
 
   useEffect(() => {
-    client
-      .getEntries({
-        content_type: "cursos",
+    client.getEntries({
+        content_type: 'cursos'
       })
       .then((response) => setData(response.items))
-      .catch(console.error);
+      .catch(console.error)
   }, []);
-
-  const handleToggle = () => {
+console.log(data)
+const handleToggle = () => {
     setExpanded(!expanded);
   };
-  console.log("cursos")
-  console.log(data)
+
   return (
-    
+    <div id="education">
+      <h1>Educacion y Formacion  <button onClick={handleToggle}>{expanded ? "-" : "+"}</button>  </h1>
+      <h2></h2>
+      {expanded && (
         <React.Fragment>
-          <h1 >{data}</h1>
-          <h2 >{data}</h2>
-        </React.Fragment>
-     
+      <ul>
+        {data.map((item) => (
+          <li key={item.sys.id}>
+            <h2>{item.fields.nombrecurso}</h2>
+            <p>{item.fields.fechaExpedicion}</p>
+            <p>{item.fields.descripcionCurso}</p>
+            <img src={item.fields.imagenCertificado.fields.file.url} alt={item.fields.nombrecurso}></img>
+            
+            {/* Otros campos del tipo de contenido */}
+          </li>
+        ))}
+      </ul>
+      </React.Fragment>
+      )}
+    </div>
   );
 }
 
