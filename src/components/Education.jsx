@@ -10,7 +10,6 @@ const client = contentful.createClient({
 
 function Education() {
   const [data, setData] = useState([]);
-  var cursosRealizados=null;
   const [expanded, setExpanded] = useState(true);
 
   useEffect(() => {
