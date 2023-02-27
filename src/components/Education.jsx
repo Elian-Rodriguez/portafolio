@@ -27,7 +27,6 @@ const handleToggle = () => {
   return (
     <div id="education">
       <h1>Educacion y Formacion  <button onClick={handleToggle}>{expanded ? "-" : "+"}</button>  </h1>
-      <h2></h2>
       {expanded && (
         <React.Fragment>
       <ul>
