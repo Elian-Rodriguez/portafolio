@@ -16,6 +16,10 @@
     font-size: 24px;
     margin-top: 0;
   }
+
+  .course-info h2{
+    text-align: center;
+  }
   
   .education button {
     font-size: 24px;
