@@ -44,7 +44,7 @@ function Header() {
 
   // Renderiza el componente
   return (
-    <header className="header">
+    <header className="header" >
       {/* Renderiza el video de fondo */}
       <div className="video-background">
         <video autoPlay loop muted>
