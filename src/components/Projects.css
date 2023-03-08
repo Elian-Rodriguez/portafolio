@@ -1,27 +1,28 @@
-#education {
-    background-color: #f5f5f5;
+#projects {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,114,1) 34%, rgba(0,212,255,1) 100%);
     padding: 40px 20px;
     text-align: center;
   }
   
-  #education h1 {
+  #projects h1 {
     font-size: 36px;
     font-weight: bold;
-    color: #333;
+    color: #bfb9b9;
     margin: 0;
     text-align: justify;
   }
   
-  #education h2 {
+  #projects h2 {
     font-size: 24px;
     margin-top: 0;
   }
 
-  .course-info h2{
+  .project-info h2{
     text-align: center;
   }
   
-  .education button {
+  .projects button {
     font-size: 24px;
     background-color: #333;
     color: #fff;
@@ -32,19 +33,19 @@
     transition: all 0.3s ease;
   }
   
-  .education button:hover {
+  .projects button:hover {
     background-color: #fff;
     color: #333;
   }
   
-  .education ul {
+  .projects ul {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
     grid-gap: 20px;
   }
   
-  .education  li {
+  .projects  li {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -58,25 +59,25 @@
     transition: transform 0.3s ease;
   }
   
-  .education  li:hover {
+  .project-list  li:hover {
     transform: translateY(-5px);
   }
   
-  .education  li h2 {
+  .project-list  li h2 {
     font-size: 24px;
     margin-top: 0;
   }
   
-  .education   li p {
+  .project-list   li p {
     margin: 10px 0;
   }
   
-  .education  li img {
+  .project-list  li img {
     width: 100%;
     height: auto;
     transition: transform 0.3s ease;
   }
   
-  .education  li img:hover {
+  .project-list  li img:hover {
     transform: scale(1.05);
   }
