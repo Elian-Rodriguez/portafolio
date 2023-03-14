@@ -23,14 +23,14 @@ function Projects() {
       .catch(console.error);
   }, []);
 
-  console.log(data);
+
 
   const handleToggle = () => {
     setExpanded(!expanded);
   };
 
-  const handleProjectClick = (course) => {
-    setselectedProject(course);
+  const handleProjectClick = (project) => {
+    setselectedProject(project);
   };
 
   return (
