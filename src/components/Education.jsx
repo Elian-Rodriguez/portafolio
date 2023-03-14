@@ -43,8 +43,8 @@ function Education() {
               <div className="course">
                 <img
                   src={item.fields.imagenCertificado.fields.file.url}
-                  alt={item.fields.nombrecurso}
-                ></img>
+                  alt={item.fields.nombrecurso}>
+                </img>
                 <div className="course-info">
                   <h2>{item.fields.nombrecurso}</h2>
                   

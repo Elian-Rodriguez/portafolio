@@ -30,6 +30,7 @@ function Footer() {
               <path d="M8 8l0 .01"></path>
               <path d="M12 16l0 -5"></path>
               <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
+              
             </svg>
             LinkedIn
           </a>
