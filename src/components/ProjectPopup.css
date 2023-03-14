@@ -93,3 +93,34 @@
     margin: 0;
   }
   
+
+
+  .github {
+    display: inline-block;
+    background-color: #6f42c1;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+.github:hover {
+    background-color: #5e3bb8;
+  }
+
+.production{
+  display: inline-block;
+  background: rgb(34,86,195);
+background: linear-gradient(0deg, rgba(34,86,195,1) 0%, rgba(69,45,253,1) 100%);
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s ease-in-out;  
+}
+.production:hover {
+  background-color: #5e3bb8;
+}
