@@ -37,7 +37,7 @@ function Projects() {
     <div className="projects" id="projects">
       <div className="project-header">
         <h1>
-          Proyectos<button onClick={handleToggle}>{expanded ? "-" : "+"}</button>{" "}
+          Proyectos <button onClick={handleToggle}>{expanded ? "-" : "+"}</button>{" "}
         </h1>
         {expanded && (
           <ul className="project-list">
