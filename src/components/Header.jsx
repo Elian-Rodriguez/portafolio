@@ -5,9 +5,11 @@ import backgroundVideo from "../assets/video.mp4";
 import profileImage from "../assets/image.png";
 import './Header.css'
 
+
 // Crea una instancia del cliente de Contentful
 const client = contentful.createClient({
   space: "m50dx8rsupt2",
+  environment: "master",
   accessToken: "UchwU0LEtcJi9a7a5xHfK9WtrcWaBzVebcJKOmiIkAc",
 });
 
@@ -39,8 +41,12 @@ function Header() {
   }, [dataPersons]);
 
   // Actualiza la imagen de perfil si hay una URL de imagen disponible
-  data.foto=profileImage;
-  //console.log(data)
+  let imageProfile = null;
+  if (data["foto"] && data["foto"]["fields"] && data["foto"]["fields"]["file"] && data["foto"]["fields"]["file"]["url"]){
+    imageProfile = data["foto"]["fields"]["file"]["url"];
+  }
+  
+
 
   // Renderiza el componente
   return (
@@ -54,7 +60,7 @@ function Header() {
 
       {/* Renderiza la imagen de perfil */}
       <div className="profile-image">
-        <img src={data.foto} alt="Profile" />
+        <img src={imageProfile} alt="Profile" />
       </div>
 
       {/* Renderiza el nombre y apellido */}
