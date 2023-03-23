@@ -6,7 +6,7 @@ function Navbar() {
     <nav className="Navbar" id="Navbar" >
        <ul>
           <li><a href="#introduction">Introducción</a></li>
-          <li><a href="#skills">Habilidades</a></li>
+          <li><a href="#Certifications">Certificaciones</a></li>
           <li><a href="#projects">Proyectos</a></li>
           <li><a href="#experience">Experiencia</a></li>
           <li><a href="#education">Educación</a></li>

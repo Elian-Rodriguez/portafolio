@@ -1,0 +1,111 @@
+.Certifications {
+    margin:5px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    overflow: hidden;
+    padding: 20px 20px;
+    /*height: 80vh; /* Establece la altura de la sección de certificaciones en el 80% de la altura de la pantalla */
+  }
+  
+  .Certifications h1{
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+  }
+
+
+  .Certifications button {
+    font-size: 24px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .Certifications button:hover {
+    background-color: #fff;
+    color: #333;
+  }
+
+  .Certifications ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /*display: flex;*/
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+    grid-gap: 20px;
+  }
+  
+  .Certification {
+    width: 20%; /* Establece el ancho de cada certificación en el 20% del ancho de la pantalla */
+    margin: 0 10px; /* Agrega un margen horizontal para separar las certificaciones */
+    transition: transform 0.3s ease-in-out; /* Agrega una transición suave al desplazamiento */
+  }
+  
+  .Certification img {
+    width: 100%;
+    display: block;
+  }
+  
+  .Certification:hover {
+    transform: scale(1.1); /* Aumenta el tamaño de la certificación al pasar el mouse sobre ella */
+    cursor: pointer; /* Cambia el cursor a un puntero para indicar que se puede hacer clic en la certificación */
+  }
+  
+  .Certification {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 5px;
+    animation: slideInUp 1s ease-out;
+    margin-bottom: 50px;
+  }
+
+
+  @media (max-width: 768px) {
+    /* Para pantallas más pequeñas, se reduce el ancho de la certificación */
+    .Certification {
+      width: 40%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* Para pantallas aún más pequeñas, se reduce aún más el ancho de la certificación */
+    .Certification {
+      width: 80%;
+    }
+  }
+  
+
+  @keyframes slideInUp {
+    from {
+      transform: translateY(50%);
+      opacity: 0;
+    }
+  
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
