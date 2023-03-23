@@ -12,7 +12,7 @@ const client = contentful.createClient({
 function Certifications() {
   const [data, setData] = useState([]);
   const [expanded, setExpanded] = useState(true);
-  const [selectedCertification, setSelectedCertifications] = useState(null); 
+  /*const [selectedCertification, setSelectedCertifications] = useState(null); */
 
   useEffect(() => {
     client.getEntries({
@@ -26,9 +26,9 @@ function Certifications() {
     setExpanded(!expanded);
   };
 
-  const handleCertificationsClick = (Certification) => {
+ /* const handleCertificationsClick = (Certification) => {
     setSelectedCertifications(Certification);
-  };
+  };*/
 
   return (
     <div id="Certifications" className="Certifications">
@@ -50,8 +50,6 @@ function Certifications() {
                 </img>
                 <div className="Certification-info">
                   <h2>{item.fields.nombreDeCertificacion} - {item.fields.fechaDeEmisionCertificacion}</h2>
-                  
-                  
                 </div>
               </div>
             </li>
