@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as contentful from "contentful";
 import './Certifications.css';
-//import CertificationPopup from "./CertificationPopup";
+import CertificationPopup from "./CertificationPopup";
 
 const client = contentful.createClient({
   space: "m50dx8rsupt2",
@@ -12,7 +12,7 @@ const client = contentful.createClient({
 function Certifications() {
   const [data, setData] = useState([]);
   const [expanded, setExpanded] = useState(true);
-  /*const [selectedCertification, setSelectedCertifications] = useState(null); */
+  const [selectedCertification, setSelectedCertifications] = useState(null); 
 
   useEffect(() => {
     client.getEntries({
@@ -26,9 +26,9 @@ function Certifications() {
     setExpanded(!expanded);
   };
 
- /* const handleCertificationsClick = (Certification) => {
+  const handleCertificationsClick = (Certification) => {
     setSelectedCertifications(Certification);
-  };*/
+  };
 
   return (
     <div id="Certifications" className="Certifications">
@@ -56,6 +56,14 @@ function Certifications() {
           ))}
         </ul>
         </React.Fragment>
+      )}
+
+
+{selectedCertification && (
+        <CertificationPopup
+          project={selectedCertification}
+          onClose={() => setSelectedCertifications(null)}
+        />
       )}
      
     </div>
