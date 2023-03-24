@@ -1,17 +1,19 @@
 .Certifications {
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(0,212,255,1) 0%,  rgba(2,0,36,1) 100%);
     margin:5px;
     display: flex;
     flex-direction: column;
     align-items: left;
     overflow: hidden;
-    padding: 20px 20px;
+    padding: 40px 20px;
     /*height: 80vh; /* Establece la altura de la sección de certificaciones en el 80% de la altura de la pantalla */
   }
   
   .Certifications h1{
     font-size: 36px;
     font-weight: bold;
-    color: #333;
+    color: #fff;
     margin: 0;
   }
 
@@ -70,6 +72,40 @@
     border-radius: 5px;
     animation: slideInUp 1s ease-out;
     margin-bottom: 50px;
+  }
+
+  .Certification  li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.3s ease;
+  }
+
+  .certificationButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    background: rgb(33, 224, 202);
+    background: linear-gradient(0deg, rgb(34, 101, 195) 0%, rgb(45, 114, 253) 100%);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .certificationButton:hover {
+    background-color: #5e3bb8;
   }
 
 
