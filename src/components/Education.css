@@ -1,4 +1,6 @@
-
+.education  li img:hover {
+  transform: scale(1.05);
+}
 
 #education {
   background-color: #f5f5f5;
@@ -79,6 +81,3 @@
   transition: transform 0.3s ease;
 }
 
-.education  li img:hover {
-  transform: scale(1.05);
-}
