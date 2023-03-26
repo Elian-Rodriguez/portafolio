@@ -37,7 +37,7 @@ function Education() {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 3,
     dotsClass: "slick-dots custom-dots",
     autoplay: true, // agregamos esta propiedad para habilitar el autoplay
@@ -54,7 +54,7 @@ function Education() {
       {expanded && (
         <Slider {...settings}>
           {data.map((item) => (
-            <div className="education-cobtainer">
+            <div className="education-container">
             <div key={item.sys.id} onClick={() => handleCourseClick(item)}>
               <div className="course">
                 <img
