@@ -59,6 +59,7 @@
   .popup-right-project {
     flex: 0 0 40%;
     width: 40%; /* se agrega la propiedad width */
+    padding: 10px 10px;
   }
   
   .popup-right-project p {

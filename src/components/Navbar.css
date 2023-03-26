@@ -5,7 +5,7 @@
     background-color: #02C6DE;
     padding: 1rem;
     justify-content: center; 
-    width: 100%;
+    max-width: 100%;
   }
   
   .Navbar ul {
