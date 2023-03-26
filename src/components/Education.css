@@ -1,82 +1,84 @@
-#education {
-    background-color: #f5f5f5;
-    padding: 40px 20px;
-    text-align: center;
-  }
-  
-  #education h1 {
-    font-size: 36px;
-    font-weight: bold;
-    color: #333;
-    margin: 0;
-    text-align: justify;
-  }
-  
-  #education h2 {
-    font-size: 24px;
-    margin-top: 0;
-  }
 
-  .course-info h2{
-    text-align: center;
-  }
-  
-  .education button {
-    font-size: 24px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .education button:hover {
-    background-color: #fff;
-    color: #333;
-  }
-  
-  .education ul {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
-    grid-gap: 20px;
-  }
-  
-  .education  li {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    max-width: 600px;
-    padding: 20px;
-    text-align: left;
-    transition: transform 0.3s ease; 
-  }
-  
-  .education  li:hover {
-    transform: translateY(-5px);
-  }
-  
-  .education  li h2 {
-    font-size: 24px;
-    margin-top: 0;
-  }
-  
-  .education   li p {
-    margin: 10px 0;
-  }
-  
-  .education  li img {
-    width: 100%;
-    height: auto;
-    transition: transform 0.3s ease;
-  }
-  
-  .education  li img:hover {
-    transform: scale(1.05);
-  }
+
+#education {
+  background-color: #f5f5f5;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+#education h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  text-align: justify;
+}
+
+#education h2 {
+  font-size: 24px;
+  margin-top: 0;
+}
+
+.course-info h2{
+  text-align: center;
+}
+
+.education button {
+  font-size: 24px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.education button:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+.education ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+  grid-gap: 20px;
+}
+
+.education  li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 600px;
+  padding: 20px;
+  text-align: left;
+  transition: transform 0.3s ease; 
+}
+
+.education  li:hover {
+  transform: translateY(-5px);
+}
+
+.education  li h2 {
+  font-size: 24px;
+  margin-top: 0;
+}
+
+.education   li p {
+  margin: 10px 0;
+}
+
+.education  li img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.education  li img:hover {
+  transform: scale(1.05);
+}
