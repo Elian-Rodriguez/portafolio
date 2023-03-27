@@ -16,7 +16,7 @@ function ProjectPopup({ project, onClose }) {
           <div className="popup-left-project">
           <div>
             <img
-              src={project.fields.videoproyecto.fields.file.url}
+              src={project.fields.videoproyecto.fields.file.url.replace("http://", "https://")}
               alt={project.fields.nombreproyecto}
             />
             </div>

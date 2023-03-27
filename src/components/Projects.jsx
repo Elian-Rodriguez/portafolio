@@ -52,7 +52,7 @@ function Projects() {
                     ></img>
                   ) : (
                     <img
-                      src={item.fields.iconoproyecto.fields.file.url}
+                      src={item.fields.iconoproyecto.fields.file.url.replace("http://", "https://")}
                       alt={item.fields.nombreproyecto}
                       className="project-image"
                     ></img>

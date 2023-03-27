@@ -46,7 +46,7 @@ function Certifications() {
             <li key={item.sys.id} onClick={() => handleCertificationsClick(item)}>
               <div className="Certification">
                 <img
-                  src={item.fields.certificacionr.fields.file.url}
+                  src={item.fields.certificacionr.fields.file.url.replace("http://", "https://")}
                   alt={item.fields.nombreDeCertificacion}>
                 </img>
                 <div className="Certification-info">

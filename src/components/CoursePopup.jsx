@@ -13,7 +13,7 @@ function CoursePopup({ course, onClose }) {
         <div className="popup-body">
           <div className="popup-left">
             <img
-              src={course.fields.imagenCertificado.fields.file.url}
+              src={course.fields.imagenCertificado.fields.file.url.replace("http://", "https://")}
               alt={course.fields.nombrecurso}
             />
           </div>

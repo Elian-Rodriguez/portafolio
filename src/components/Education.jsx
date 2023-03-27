@@ -59,7 +59,7 @@ function Education() {
             <div key={item.sys.id} onClick={() => handleCourseClick(item)}>
               <div className="course">
                 <img
-                  src={item.fields.imagenCertificado.fields.file.url}
+                  src={item.fields.imagenCertificado.fields.file.url.replace("http://", "https://")}
                   alt={item.fields.nombrecurso}>
                 </img>
                 <div className="course-info">
