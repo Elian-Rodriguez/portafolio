@@ -54,7 +54,7 @@
   }
   
   .popup-header {
-    display: flex;
+    display: fixed;
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
@@ -62,6 +62,12 @@
     align-self: center; /* se centra */
     width: 100%; /* se extiende a lo ancho */
     text-align: center; /* se centra el texto */
+    
+    position: sticky;
+    top: 0%;
+    z-index: 1;
+    background-color: white;
+    
   }
 
   .popup-header h1{

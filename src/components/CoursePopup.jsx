@@ -5,8 +5,8 @@ import ReactMarkdown from 'react-markdown';
 function CoursePopup({ course, onClose }) {
   return (
     <div className="popup-overlay-course">
-      <div className="popup-content-project">
-        <div className="popup-header">
+      <div className="popup-content-course">
+        <div className="popup-header" is="popup-header-project">
           <h1>{course.fields.nombrecurso}</h1>
           <button onClick={onClose}>X</button>
         </div>

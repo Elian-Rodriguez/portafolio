@@ -39,6 +39,12 @@
     align-self: center;
     width: 100%;
     text-align: center;
+    
+    color: black;
+    position: sticky;
+    top: 0%;
+    z-index: 1;
+    background-color: white;
   }
   
   .popup-header-project a {
@@ -48,6 +54,28 @@
   .popup-header-project h1 {
     margin: 0;
     color: black;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+  }
+  #popup-header-project h1 {
+    margin: 0;
+    color: black;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+  }
+
+  #popup-header-project {
+    margin: 0;
+    color: black;
+    font-size: 36px;
+    font-weight: bold;
+    color: #bfb9b9;
+    margin: 0;
+    text-align: center;
   }
   
   .popup-left-project {
@@ -91,6 +119,7 @@
   }
   
   .popup-body-footer-project h1 {
+    color: black;
     margin: 0;
   }
   
