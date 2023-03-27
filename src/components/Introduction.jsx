@@ -5,8 +5,9 @@ import "./Introduccion.css";
 
 
 const client = contentful.createClient({
-  space: "m50dx8rsupt2",
-  accessToken: "UchwU0LEtcJi9a7a5xHfK9WtrcWaBzVebcJKOmiIkAc",
+  space: process.env.REACT_APP_SPACE,
+  environment: process.env.REACT_APP_ENVIRONMENT,
+  accessToken: process.env.REACT_APP_ACCESS_TOKEN,
 });
 
 function Introduccion() {

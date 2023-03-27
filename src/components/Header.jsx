@@ -8,9 +8,9 @@ import './Header.css'
 
 // Crea una instancia del cliente de Contentful
 const client = contentful.createClient({
-  space: "m50dx8rsupt2",
-  environment: "master",
-  accessToken: "UchwU0LEtcJi9a7a5xHfK9WtrcWaBzVebcJKOmiIkAc",
+  space: process.env.REACT_APP_SPACE,
+  environment: process.env.REACT_APP_ENVIRONMENT,
+  accessToken: process.env.REACT_APP_ACCESS_TOKEN,
 });
 
 // Define el componente Header
