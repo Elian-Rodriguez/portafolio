@@ -1,5 +1,6 @@
 import React from "react";
 import "./CoursePopup.css";
+import ReactMarkdown from 'react-markdown';
 
 function CoursePopup({ course, onClose }) {
   return (
@@ -18,7 +19,11 @@ function CoursePopup({ course, onClose }) {
           </div>
           <div className="popup-right">
             <h2>Contenido o Descripcion</h2>
-            <p>{course.fields.descripcionCurso}</p>
+            <p>
+            <ReactMarkdown>
+            {course.fields.descripcionCurso.toString()}
+            </ReactMarkdown>
+            </p>
             <h3>Fecha de expedición: {course.fields.fechaExpedicion}</h3>
             <h4>Empresa:  {course.fields.institucion}</h4>
           </div>
