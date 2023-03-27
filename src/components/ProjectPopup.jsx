@@ -2,6 +2,7 @@ import React from "react";
 import ReactMarkdown from 'react-markdown';
 import "./ProjectPopup.css";
 
+
 function ProjectPopup({ project, onClose }) {
   return (
 
