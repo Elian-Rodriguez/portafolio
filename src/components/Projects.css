@@ -41,7 +41,7 @@
   .projects ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(33%, 1fr));
     grid-gap: 20px;
   }
   
