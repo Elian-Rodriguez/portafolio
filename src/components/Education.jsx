@@ -48,7 +48,7 @@ function Education() {
 
   return (
     <div id="education" className="education">
-      <h1>
+      <h1 className="education-title">
         Educación y Formación{" "}
         <button onClick={handleToggle}>{expanded ? "-" : "+"}</button>{" "}
       </h1>

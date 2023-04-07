@@ -50,7 +50,14 @@
   .popup-header-project a {
     color: black;
   }
-  
+  .popup-header-project-title{
+    margin: 0;
+    color: black;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;}
+    
   .popup-header-project h1 {
     margin: 0;
     color: black;

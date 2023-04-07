@@ -9,7 +9,7 @@ function ProjectPopup({ project, onClose }) {
     <div className="popup-overlay-project">
       <div className="popup-content-project">
         <div className="popup-header-project">
-          <h1>{project.fields.nombreproyecto} </h1>  
+          <h1 className="popup-header-project-title">{project.fields.nombreproyecto} </h1>  
           <button onClick={onClose}>X</button>
         </div>
         <div className="popup-body-project">
