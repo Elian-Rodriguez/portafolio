@@ -42,12 +42,15 @@ function Education() {
     slidesToScroll: 3,
     dotsClass: "slick-dots custom-dots",
     autoplay: true, // agregamos esta propiedad para habilitar el autoplay
-    autoplaySpeed: 4500 // establecemos el tiempo entre cada cambio de slide en 2 segundos
+    autoplaySpeed: 4500, // establecemos el tiempo entre cada cambio de slide en 2 segundos
+    nextArrow: <>.</>, // agregamos esta línea para ocultar el botón "Next"
+    prevArrow: <>.</> // agregamos esta línea para ocultar el botón "Prev
    
 };
 
   return (
     <div id="education" className="education">
+      <div className="contaninerEducation">
       <h1 className="education-title">
         Educación y Formación{" "}
         <button onClick={handleToggle}>{expanded ? "-" : "+"}</button>{" "}
@@ -77,6 +80,7 @@ function Education() {
           onClose={() => setSelectedCourse(null)}
         />
       )}
+    </div>
     </div>
   );
 }

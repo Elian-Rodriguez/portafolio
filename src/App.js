@@ -20,16 +20,32 @@ function App() {
   
   return (
     <div className="App">
+      <div>
       <Header />
+      </div>
+      <div>
       <Navbar />
+      </div>
+      <div>
       <Introduction />
+      </div>
+      <div>
       <Certifications />
+      </div>
+      <div>
       <Projects />
+      </div>
+      <div>
       <Education />
+      </div>
+      <div>
       <br />
       {/*<Experience />*/}
       {/*<Contact />*/}
+      </div>
+      <div>
       <Footer />
+      </div>
     </div>
   );
 }
