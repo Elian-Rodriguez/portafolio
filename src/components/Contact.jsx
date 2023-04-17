@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './Contact.css';
 import * as contentful from 'contentful';
 
+const tockenBootTelegram = process.env.REACT_APP_TELEGRAM_BOT_TOKEN;
+const chatId = process.env.REACT_APP_CHAT_TELEGRAM;
+
 const client = contentful.createClient({
   space: process.env.REACT_APP_SPACE,
   environment: process.env.REACT_APP_ENVIRONMENT,
@@ -14,6 +17,7 @@ function Contact() {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState('');
+  const date = new Date().toUTCString();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -36,25 +40,37 @@ function Contact() {
         setEmail('');
         setPhone('');
         setMessage('');
+        // Enviar el mensaje a Telegram
+        const telegramMessage = `Nombre: ${name}\n Email: ${email}\n Teléfono: ${phone}\n Mensaje: ${message}\n\n  Fecha de envío: ${date}`;
+        fetch(`https://api.telegram.org/bot${tockenBootTelegram}/sendMessage?chat_id=${chatId}&text=${telegramMessage}`)
+          .then((res) => {
+            console.log('Mensaje enviado a Telegram');
+          })
+          .catch((err) => {
+            console.log('Error al enviar mensaje a Telegram', err);
+          });
       })
       .catch((err) => {
         setStatus('error');
+        console.log(err);
+        console.log('error');
       });
   };
 
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    client.getEntries({ content_type: 'contactoImages' })
+    client
+      .getEntries({ content_type: 'contactoImages' })
       .then((response) => setData(response.items))
       .catch(console.error);
   }, []);
 
   const [imageList, setImageList] = useState([]);
   useEffect(() => {
-    const imageUrlList = data.map((item) => (
+    const imageUrlList = data.map((item) =>
       item.fields.imagenTecnologiaContacto.fields.file.url.replace('http://', 'https://')
-    ));
+    );
     setImageList(imageUrlList);
   }, [data]);
 
@@ -66,6 +82,9 @@ function Contact() {
 
     return () => clearInterval(intervalId);
   }, [currentImage, imageList]);
+
+
+
 
   return (
     <div className="ContainerContact">
@@ -127,7 +146,10 @@ function Contact() {
               Lo siento, hubo un error al enviar tu mensaje. Por favor, inténtelo de nuevo más tarde.
             </div>
           )}
-          <button type="submit">Enviar Mensaje</button>
+          <button type="submit">Enviar Mensaje <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-telegram" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4"></path>
+</svg> </button>
         </form>
       </div>
     </section>
