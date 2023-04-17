@@ -131,6 +131,7 @@ function Contact() {
                 <textarea
                   id="message"
                   name="message"
+                  rows="4"
                   value={message}
                   onChange={(event) => setMessage(event.target.value)}
                   required
@@ -146,7 +147,7 @@ function Contact() {
               Lo siento, hubo un error al enviar tu mensaje. Por favor, inténtelo de nuevo más tarde.
             </div>
           )}
-          <button type="submit">Enviar Mensaje <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-telegram" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <button type="submit">Enviar Mensaje  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-telegram" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
    <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4"></path>
 </svg> </button>
