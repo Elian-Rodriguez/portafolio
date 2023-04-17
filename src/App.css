@@ -3,6 +3,14 @@
   margin: 0 auto;
 }
 
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -34,6 +42,29 @@
     transform: rotate(0deg);
   }
   to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+.logo {
+  opacity: 0;
+  transform: rotate(0deg);
+  animation: fill 2s ease-in-out forwards;
+}
+
+@keyframes fill {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(180deg);
+  }
+  100% {
+    opacity: 1;
     transform: rotate(360deg);
   }
 }

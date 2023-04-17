@@ -44,7 +44,7 @@ function Education() {
     autoplay: true, // agregamos esta propiedad para habilitar el autoplay
     autoplaySpeed: 4500, // establecemos el tiempo entre cada cambio de slide en 2 segundos
     nextArrow: <>.</>, // agregamos esta línea para ocultar el botón "Next"
-    prevArrow: <>.</> // agregamos esta línea para ocultar el botón "Prev
+    prevArrow: <></> // agregamos esta línea para ocultar el botón "Prev
    
 };
 

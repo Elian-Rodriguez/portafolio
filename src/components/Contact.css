@@ -1,0 +1,30 @@
+.ContainerContact {
+  display: flex;
+  width: 100%;
+}
+
+.left,
+.right {
+  width: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.right img {
+  max-width: 80%;
+  max-height: 300px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  transition: all 0.5s ease-in-out;
+}
+
+form {
+  width: 100%;
+}
+
+.form-group input, 
+.form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
