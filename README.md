@@ -1,7 +1,7 @@
-#Portafolio con React
+# Portafolio con React
 Este proyecto es un portafolio personal hecho con React que consume la API de Contentful para mostrar los textos e imágenes en la página. Además, se utiliza Telegram para enviar la información proporcionada en la sección de contacto.
 
-##Requerimientos
+## Requerimientos
 Para poder ejecutar este proyecto, necesitarás definir las siguientes variables de entorno:
 
 - REACT_APP_SPACE : el ID del espacio de Contentful donde se alojan los contenidos.
@@ -11,7 +11,7 @@ Para poder ejecutar este proyecto, necesitarás definir las siguientes variables
 - REACT_APP_CHAT_TELEGRAM : el ID del chat de Telegram al que se enviará la información.
 
 
-##Instalación
+## Instalación
 Para instalar este proyecto, debes seguir los siguientes pasos:
 
 1. Clona este repositorio en tu máquina local.
