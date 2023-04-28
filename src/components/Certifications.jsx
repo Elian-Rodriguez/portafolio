@@ -41,17 +41,24 @@ function Certifications() {
             </div>
       {expanded && (
         <React.Fragment>
-        <ul>
+          <div className="" >
+        <ul className="Certification-ul">
           {data.map((item) => (
-            <li key={item.sys.id} onClick={() => handleCertificationsClick(item)}>
+            <li key={item.sys.id} onClick={() => handleCertificationsClick(item)} className="Certification-li" >
               <div className="Certification">
+                <div className="Container-Img-Certification">
                 <img
                   src={item.fields.certificacionr.fields.file.url.replace("http://", "https://")}
                   alt={item.fields.nombreDeCertificacion}>
                 </img>
+                </div>
                 <div className="Certification-info">
-                  <h2>{item.fields.nombreDeCertificacion} <br></br> {item.fields.fechaDeEmisionCertificacion}</h2><br></br>
-                  <a href={item.fields.urlcertificado} rel="noreferrer" target="_blank" className="certificationButton">
+                  <h2>{item.fields.nombreDeCertificacion}
+                   <br></br> {item.fields.fechaDeEmisionCertificacion}</h2>
+                   <h4>Cod Verificacion: {item.fields.idVerificacio}</h4>
+                   <h4> {item.fields.empresaFormadoraCertificacion}</h4>
+                   <br></br>
+                  <a href={item.fields.linkVerificacio} rel="noreferrer" target="_blank" className="certificationButton">
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-certificate" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
    <path d="M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
@@ -67,6 +74,7 @@ function Certifications() {
             </li>
           ))}
         </ul>
+        </div>
         </React.Fragment>
       )}
 

@@ -1,154 +1,149 @@
 .Certifications {
   background: rgb(2,0,36);
-  background: linear-gradient(90deg, rgba(0,212,255,1) 0%,  rgba(2,0,36,1) 100%);
-    margin:5px;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    overflow: hidden;
-    padding: 40px 20px;
-    /*height: 80vh; /* Establece la altura de la sección de certificaciones en el 80% de la altura de la pantalla */
-  }
-  
-  .Certifications h1{
-    font-size: 36px;
-    font-weight: bold;
-    color: #fff;
-    margin: 0;
-  }
+  background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(2,0,36,1) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  overflow: hidden;
+  text-align: right;
+}
+
+.Certifications h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #4f4d4d;
+  margin: 0;
+  text-align: left;
+}
+
+.Certifications button {
+  font-size: 24px;
+  background-color: #151212;
+  color: #fff;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.Certifications button:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+.Certifications ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.Certification {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.Certification:hover {
+  transform: translateY(-5px);
+}
+.Container-Img-Certification{
+  height: 310px;
+}
+.Certification img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.Certification h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.Certification h2 br {
+  display: none;
+}
+
+.Certification h2 span {
+  font-size: 16px;
+  font-weight: normal;
+  color: #888;
+}
+
+.Certification h4 {
+  font-size: 16px;
+  font-weight: normal;
+  color: #333;
+  margin: 10px 0 0 0;
+}
+
+.certificationButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.certificationButton:hover {
+  background-color: #fff;
+  color: #333;
+  border: 2px solid #333;
+}
 
 
-  .Certifications button {
-    font-size: 24px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .Certifications button:hover {
-    background-color: #fff;
-    color: #333;
-  }
-
-  .Certifications ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    /*display: inline-flex;*/
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    max-width: 100%;
-    max-height: 100%;
-
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10%, 2fr));
-    grid-gap: 5px;
-
-   
-    
-   
-  }
-  
-  .Certification {
-    max-width: 20%; /* Establece el ancho de cada certificación en el 20% del ancho de la pantalla */
-    margin: 2px 2px; /* Agrega un margen horizontal para separar las certificaciones */
-    transition: transform 0.3s ease-in-out; /* Agrega una transición suave al desplazamiento */
-    padding: 10px 5px;
-  }
-  
-  .Certification img {
-    width: 100%;
-    display: block;
-  }
-  
-  .Certification:hover {
-    transform: scale(1.1); /* Aumenta el tamaño de la certificación al pasar el mouse sobre ella */
-    cursor: pointer; /* Cambia el cursor a un puntero para indicar que se puede hacer clic en la certificación */
-  }
-  
-  .Certification {
-    background-color: #f8f8f8;
-    padding: 20px;
-    border-radius: 5px;
-    animation: slideInUp 1s ease-out;
-    margin-bottom: 0px;
-  }
-
-  .Certification  li {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 5px auto;
-    max-width: 20%;
-    padding: 20px;
-    text-align: left;
-    transition: transform 0.3s ease;
-  }
-
-  .certificationButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    margin: 0;
-    background: rgb(33, 224, 202);
-    background: linear-gradient(0deg, rgb(34, 101, 195) 0%, rgb(45, 114, 253) 100%);
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    text-align: center;
-    transition: background-color 0.2s ease-in-out;
-  }
-
-  .certificationButton:hover {
-    background-color: #5e3bb8;
-  }
 
 
-  @media (max-width: 768px) {
-    /* Para pantallas más pequeñas, se reduce el ancho de la certificación */
-    .Certification {
-      width: 40%;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    /* Para pantallas aún más pequeñas, se reduce aún más el ancho de la certificación */
-    .Certification {
-      width: 80%;
-    }
-  }
-  
+ @media (max-width: 768px) {
+ /* Para pantallas más pequeñas, se reduce el ancho de la certificación */
+ .Certification {
+  width: 40%;
+ }
+ }
+ 
+ @media (max-width: 480px) {
+ /* Para pantallas aún más pequeñas, se reduce aún más el ancho de la certificación */
+ .Certification {
+  width: 80%;
+ }
+ }
+ 
 
-  @keyframes slideInUp {
-    from {
-      transform: translateY(50%);
-      opacity: 0;
-    }
-  
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-  
-    to {
-      opacity: 1;
-    }
-  }
+ @keyframes slideInUp {
+ from {
+  transform: translateY(50%);
+  opacity: 0;
+ }
+ 
+ to {
+  transform: translateY(0);
+  opacity: 1;
+ }
+ }
+ 
+ @keyframes fadeIn {
+ from {
+  opacity: 0;
+ }
+ 
+ to {
+  opacity: 1;
+ }
+ }
 
-  
+ 
