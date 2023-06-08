@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+# Portafolio con React
+Este proyecto es un portafolio personal hecho con React que consume la API de Contentful para mostrar los textos e imágenes en la página. Además, se utiliza Telegram para enviar la información proporcionada en la sección de contacto.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Requerimientos
+Para poder ejecutar este proyecto, necesitarás definir las siguientes variables de entorno:
 
-## Available Scripts
+- REACT_APP_SPACE : el ID del espacio de Contentful donde se alojan los contenidos.
+- REACT_APP_ENVIRONMENT : el ambiente de Contentful que se utilizará.
+- REACT_APP_ACCESS_TOKEN : el token de acceso para Contentful.
+- REACT_APP_TELEGRAM_BOT_TOKEN : el token del bot de Telegram que se utilizará para enviar la información.
+- REACT_APP_CHAT_TELEGRAM : el ID del chat de Telegram al que se enviará la información.
 
-In the project directory, you can run:
 
-### `npm start`
+## Instalación
+Para instalar este proyecto, debes seguir los siguientes pasos:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Clona este repositorio en tu máquina local.
+2. Ejecuta ```bash npm install ```  en la carpeta del proyecto para instalar las dependencias.
+3. Define las variables de entorno en un archivo .env.
+4. Ejecuta ```bash  npm start  ``` para iniciar la aplicación.
+5. Abre tu navegador con [http://localhost:3000](http://localhost:3000)  para verlo en su navegador. 
