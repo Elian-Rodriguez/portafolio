@@ -38,7 +38,7 @@ export function Navbar() {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:pt-5">
-        <nav className="glass-strong flex w-full max-w-3xl items-center justify-between gap-2 rounded-full py-2 pl-3 pr-2 shadow-soft">
+        <nav className="glass-strong flex w-full max-w-4xl items-center justify-between gap-2 rounded-full py-2 pl-3 pr-2 shadow-soft">
           {/* Brand */}
           <button
             onClick={() => go('inicio')}
