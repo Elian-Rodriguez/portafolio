@@ -11,6 +11,7 @@ import { Preloader } from '@/components/layout/Preloader'
 import { Hero } from '@/components/sections/Hero'
 import { About } from '@/components/sections/About'
 import { Experience } from '@/components/sections/Experience'
+import { Security } from '@/components/sections/Security'
 import { Projects } from '@/components/sections/Projects'
 import { TechStack } from '@/components/sections/TechStack'
 import { Credentials } from '@/components/sections/Credentials'
@@ -39,6 +40,7 @@ export default function App() {
           <Hero />
           <About />
           <Experience />
+          <Security />
           <Projects />
           <TechStack />
           <Credentials />

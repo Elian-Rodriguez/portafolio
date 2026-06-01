@@ -15,6 +15,7 @@ export const navLinks: NavLink[] = [
   { id: 'inicio', label: 'Inicio' },
   { id: 'sobre-mi', label: 'Sobre mí' },
   { id: 'experiencia', label: 'Experiencia' },
+  { id: 'seguridad', label: 'Seguridad' },
   { id: 'proyectos', label: 'Proyectos' },
   { id: 'stack', label: 'Stack' },
   { id: 'credenciales', label: 'Credenciales' },
@@ -237,5 +238,103 @@ export const fallbackCourses: Course[] = [
     fecha: '2023',
     descripcion: 'Contenedores, imágenes, redes y despliegues reproducibles.',
   },
+]
+
+/* ===================== Ciberseguridad ===================== */
+
+export const securityMotto = 'Porque con poco se puede hacer mucho.'
+
+export const tryhackme = {
+  user: 'coguarhack',
+  profile: 'https://tryhackme.com/p/coguarhack',
+  badge: 'https://tryhackme-badges.s3.amazonaws.com/coguarhack.png',
+}
+
+export interface SecurityArea {
+  icon: 'radar' | 'workflow' | 'lock' | 'bug' | 'scanLine' | 'fish'
+  title: string
+  description: string
+  tools: string[]
+}
+
+export const securityAreas: SecurityArea[] = [
+  {
+    icon: 'radar',
+    title: 'SOC & Blue Team',
+    description:
+      'Monitoreo, detección y respuesta a incidentes con visibilidad centralizada en SIEM.',
+    tools: ['SIEM', 'Exabeam', 'Triage'],
+  },
+  {
+    icon: 'workflow',
+    title: 'SOAR & Automatización',
+    description:
+      'Orquestación de respuesta: recibir alertas, analizar y ejecutar acciones automáticas con Python.',
+    tools: ['Python', 'Shuffle', 'Tracecat', 'n8n', 'Siemplify'],
+  },
+  {
+    icon: 'lock',
+    title: 'DevSecOps & Cloud Security',
+    description:
+      'Seguridad integrada en CI/CD y en la nube (AWS, Azure, GCP) con contenedores endurecidos.',
+    tools: ['AWS', 'Azure', 'GCP', 'Docker'],
+  },
+  {
+    icon: 'bug',
+    title: 'Detección & Honeypots',
+    description:
+      'IDS/IPS y trampas que aprenden del atacante para alimentar el SIEM y los playbooks.',
+    tools: ['Suricata', 'Snort', 'Cowrie', 'Conpot'],
+  },
+  {
+    icon: 'scanLine',
+    title: 'Gestión de Vulnerabilidades',
+    description: 'Ciclo detectar → priorizar → parchar → validar, con parcheo automatizado.',
+    tools: ['Nessus', 'OpenVAS', 'Nuclei', 'Ansible'],
+  },
+  {
+    icon: 'fish',
+    title: 'Ingeniería Social & Concienciación',
+    description:
+      'Simulaciones de phishing y cultura de seguridad: el usuario entrenado es la mejor defensa.',
+    tools: ['GoPhish', 'King Phisher'],
+  },
+]
+
+export interface SecurityCert {
+  nombre: string
+  emisor: string
+}
+
+export const securityCerts: SecurityCert[] = [
+  { nombre: 'SOC Level 1', emisor: 'TryHackMe' },
+  { nombre: 'Security Engineer', emisor: 'TryHackMe' },
+  { nombre: 'DevSecOps', emisor: 'TryHackMe' },
+  { nombre: 'SOAR Developer', emisor: 'Google Cloud Security' },
+  { nombre: 'Cloud Security Fundamentals', emisor: 'Palo Alto Networks' },
+  { nombre: 'SOAR Fundamentals (Siemplify)', emisor: 'Udemy' },
+]
+
+export const securityTools = [
+  'Python',
+  'SOAR',
+  'SIEM',
+  'Suricata',
+  'Snort',
+  'Honeypots',
+  'Nessus',
+  'OpenVAS',
+  'Nuclei',
+  'Tenable',
+  'Ansible',
+  'Automox',
+  'pfSense',
+  'Fortinet',
+  'Palo Alto',
+  'GoPhish',
+  'Linux',
+  'AWS',
+  'Azure',
+  'GCP',
 ]
 
