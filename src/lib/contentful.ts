@@ -8,9 +8,11 @@ import type {
   Project,
 } from './contentful-types'
 
-const space = import.meta.env.VITE_CONTENTFUL_SPACE
-const accessToken = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN
-const environment = import.meta.env.VITE_CONTENTFUL_ENVIRONMENT || 'master'
+const space = import.meta.env.VITE_CONTENTFUL_SPACE || import.meta.env.REACT_APP_SPACE
+const accessToken =
+  import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN || import.meta.env.REACT_APP_ACCESS_TOKEN
+const environment =
+  import.meta.env.VITE_CONTENTFUL_ENVIRONMENT || import.meta.env.REACT_APP_ENVIRONMENT || 'master'
 
 export const isContentfulConfigured = Boolean(space && accessToken)
 

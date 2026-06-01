@@ -50,8 +50,9 @@ Scripts:
 
 ## 🔑 Variables de entorno
 
-Crea un archivo `.env` (ver [`.env.example`](.env.example)). En Vite las variables
-deben llevar el prefijo `VITE_`:
+Crea un archivo `.env` (ver [`.env.example`](.env.example)). Se aceptan **ambos
+prefijos**: las nuevas `VITE_*` (recomendadas) o las antiguas `REACT_APP_*` (habilitadas
+con `envPrefix` en `vite.config.ts`). Si defines ambas, tienen prioridad las `VITE_*`:
 
 | Variable | Antes (CRA) | Descripción |
 | --- | --- | --- |

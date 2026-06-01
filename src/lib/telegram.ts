@@ -1,5 +1,5 @@
-const token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN
-const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID
+const token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN || import.meta.env.REACT_APP_TELEGRAM_BOT_TOKEN
+const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID || import.meta.env.REACT_APP_CHAT_TELEGRAM
 
 export const isTelegramConfigured = Boolean(token && chatId)
 

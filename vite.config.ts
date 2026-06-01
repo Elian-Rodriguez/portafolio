@@ -6,6 +6,8 @@ import path from 'node:path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  // Expose both the new VITE_* vars and the legacy CRA REACT_APP_* vars.
+  envPrefix: ['VITE_', 'REACT_APP_'],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
