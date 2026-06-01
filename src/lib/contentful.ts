@@ -130,6 +130,7 @@ export async function getCourses(): Promise<Course[]> {
       id: it.sys.id,
       nombre: f.nombrecurso ?? 'Curso',
       imagen: cert ?? diploma,
+      diploma: diploma ?? cert,
       descripcion: asString(f.descripcionCurso),
       fecha: asString(f.fechaExpedicion),
       institucion: f.institucion,

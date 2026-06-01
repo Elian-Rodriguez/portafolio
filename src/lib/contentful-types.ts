@@ -39,7 +39,10 @@ export interface Project {
 export interface Course {
   id: string
   nombre: string
+  /** Badge/insignia — used as the card thumbnail. */
   imagen?: CfImage
+  /** Full diploma image — used as the large media in the course modal. */
+  diploma?: CfImage
   descripcion?: string
   fecha?: string
   institucion?: string
