@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { ArrowDown, ArrowUpRight, Download, Sparkles } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Download } from 'lucide-react'
 import { SocialGlyph } from '@/components/icons'
 import { Button } from '@/components/ui/Button'
 import { buttonVariants } from '@/components/ui/Button'
@@ -119,16 +119,6 @@ export function Hero() {
       <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
         {/* Text column */}
         <div className="flex flex-col items-start">
-          <motion.span
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="glass mb-7 inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-[0.18em] text-muted"
-          >
-            <Sparkles className="h-3.5 w-3.5 text-aqua" />
-            Disponible para nuevos proyectos
-          </motion.span>
-
           <p className="mb-3 font-mono text-sm text-aqua">Hola, soy</p>
           <AnimatedName text={data.nombre} />
 

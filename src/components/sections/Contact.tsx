@@ -56,14 +56,6 @@ export function Contact() {
             description="Cuéntame qué quieres construir. Hablemos de backend, arquitectura o de cómo llevar tu idea a producción."
           />
 
-          <div className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
-            </span>
-            <span className="text-sm text-muted">Disponible para nuevos proyectos</span>
-          </div>
-
           <div className="mt-8 flex flex-col gap-3">
             {socials.map((s) => (
               <a
