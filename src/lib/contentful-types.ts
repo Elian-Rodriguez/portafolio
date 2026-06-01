@@ -43,6 +43,8 @@ export interface Course {
   descripcion?: string
   fecha?: string
   institucion?: string
+  /** Where to go on click: platform URL (urlcurso) → diploma → certificate. */
+  url?: string
 }
 
 /** content_type: certificaciones */

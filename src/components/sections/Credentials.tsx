@@ -59,19 +59,31 @@ function CertCard({ c }: { c: Certification }) {
 
 function CourseCard({ c }: { c: Course }) {
   const img = c.imagen?.url ? cfImage(c.imagen.url, { w: 640 }) : undefined
-  return (
-    <GlassCard className="flex h-full flex-col overflow-hidden">
+  const inner = (
+    <GlassCard className="flex h-full flex-col overflow-hidden transition-transform duration-300 group-hover:-translate-y-1">
       <div className="relative aspect-[16/10] overflow-hidden border-b border-white/10">
         {img ? (
-          <img src={img} alt={c.nombre} loading="lazy" className="h-full w-full object-cover" />
+          <img
+            src={img}
+            alt={c.nombre}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
         ) : (
           <div className="grid h-full w-full place-items-center bg-gradient-to-br from-iris/25 via-panel to-aqua/15">
             <span className="font-display text-5xl font-bold text-white/20">{c.nombre.charAt(0)}</span>
           </div>
         )}
+        {c.url ? (
+          <div className="absolute right-3 top-3 grid h-9 w-9 -translate-y-1 place-items-center rounded-full glass text-ink opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+            <ExternalLink className="h-4 w-4" />
+          </div>
+        ) : null}
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <h4 className="font-display text-base font-semibold text-ink">{c.nombre}</h4>
+        <h4 className="font-display text-base font-semibold text-ink transition-colors duration-300 group-hover:text-iris-soft">
+          {c.nombre}
+        </h4>
         {c.institucion ? <p className="mt-1 text-sm text-iris-soft">{c.institucion}</p> : null}
         {c.fecha ? <p className="mt-0.5 font-mono text-xs text-faint">{c.fecha}</p> : null}
         {c.descripcion ? (
@@ -80,6 +92,21 @@ function CourseCard({ c }: { c: Course }) {
       </div>
     </GlassCard>
   )
+
+  if (c.url) {
+    return (
+      <a
+        href={c.url}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`Abrir ${c.nombre}`}
+        className="group block h-full"
+      >
+        {inner}
+      </a>
+    )
+  }
+  return <div className="group h-full">{inner}</div>
 }
 
 export function Credentials() {

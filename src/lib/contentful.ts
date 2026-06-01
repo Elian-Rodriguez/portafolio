@@ -124,13 +124,16 @@ export async function getCourses(): Promise<Course[]> {
   const items = await entries('cursos')
   return items.map((it) => {
     const f = it.fields
+    const cert = toImage(f.imagenCertificado)
+    const diploma = toImage(f.imagenDiploma)
     return {
       id: it.sys.id,
       nombre: f.nombrecurso ?? 'Curso',
-      imagen: toImage(f.imagenCertificado),
+      imagen: cert ?? diploma,
       descripcion: asString(f.descripcionCurso),
       fecha: asString(f.fechaExpedicion),
       institucion: f.institucion,
+      url: f.urlcurso || diploma?.url || cert?.url,
     }
   })
 }
