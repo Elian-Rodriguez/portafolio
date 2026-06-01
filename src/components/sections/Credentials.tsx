@@ -1,7 +1,14 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
-import { BadgeCheck, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
+import {
+  ArrowUpRight,
+  BadgeCheck,
+  ChevronLeft,
+  ChevronRight,
+  ExternalLink,
+  Search,
+} from 'lucide-react'
 import type { Certification, Course } from '@/lib/contentful-types'
 import { Section } from '@/components/ui/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -10,6 +17,10 @@ import { GlassCard } from '@/components/ui/GlassCard'
 import { useContentful } from '@/hooks/useContentful'
 import { getCertifications, getCourses, cfImage } from '@/lib/contentful'
 import { fallbackCertifications, fallbackCourses } from '@/data/site'
+import { CourseModal } from './CourseModal'
+
+/** Accent + case-insensitive normalize for searching. */
+const normalize = (s: string) => s.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '')
 
 function CertCard({ c }: { c: Certification }) {
   const img = c.imagen?.url ? cfImage(c.imagen.url, { w: 640 }) : undefined
@@ -54,28 +65,44 @@ function CertCard({ c }: { c: Certification }) {
   )
 }
 
-function CourseCard({ c }: { c: Course }) {
+function CourseCard({ c, onOpen }: { c: Course; onOpen: () => void }) {
   const img = c.imagen?.url ? cfImage(c.imagen.url, { w: 640 }) : undefined
   return (
-    <GlassCard className="flex h-full flex-col overflow-hidden">
-      <div className="relative aspect-[16/10] overflow-hidden border-b border-white/10">
-        {img ? (
-          <img src={img} alt={c.nombre} loading="lazy" className="h-full w-full object-cover" />
-        ) : (
-          <div className="grid h-full w-full place-items-center bg-gradient-to-br from-iris/25 via-panel to-aqua/15">
-            <span className="font-display text-5xl font-bold text-white/20">{c.nombre.charAt(0)}</span>
+    <button
+      onClick={onOpen}
+      aria-label={`Ver detalle de ${c.nombre}`}
+      className="group block h-full w-full text-left"
+    >
+      <GlassCard className="flex h-full flex-col overflow-hidden transition-transform duration-300 group-hover:-translate-y-1">
+        <div className="relative aspect-[16/10] overflow-hidden border-b border-white/10">
+          {img ? (
+            <img
+              src={img}
+              alt={c.nombre}
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          ) : (
+            <div className="grid h-full w-full place-items-center bg-gradient-to-br from-iris/25 via-panel to-aqua/15">
+              <span className="font-display text-5xl font-bold text-white/20">{c.nombre.charAt(0)}</span>
+            </div>
+          )}
+          <div className="absolute right-3 top-3 grid h-9 w-9 -translate-y-1 place-items-center rounded-full glass text-ink opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+            <ArrowUpRight className="h-4 w-4" />
           </div>
-        )}
-      </div>
-      <div className="flex flex-1 flex-col p-5">
-        <h4 className="font-display text-base font-semibold text-ink">{c.nombre}</h4>
-        {c.institucion ? <p className="mt-1 text-sm text-iris-soft">{c.institucion}</p> : null}
-        {c.fecha ? <p className="mt-0.5 font-mono text-xs text-faint">{c.fecha}</p> : null}
-        {c.descripcion ? (
-          <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted">{c.descripcion}</p>
-        ) : null}
-      </div>
-    </GlassCard>
+        </div>
+        <div className="flex flex-1 flex-col p-5">
+          <h4 className="font-display text-base font-semibold text-ink transition-colors duration-300 group-hover:text-iris-soft">
+            {c.nombre}
+          </h4>
+          {c.institucion ? <p className="mt-1 text-sm text-iris-soft">{c.institucion}</p> : null}
+          {c.fecha ? <p className="mt-0.5 font-mono text-xs text-faint">{c.fecha}</p> : null}
+          {c.descripcion ? (
+            <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted">{c.descripcion}</p>
+          ) : null}
+        </div>
+      </GlassCard>
+    </button>
   )
 }
 
@@ -84,6 +111,21 @@ export function Credentials() {
   const { data: courseData } = useContentful('courses', getCourses, [])
   const certs = certData.length ? certData : fallbackCertifications
   const courses = courseData.length ? courseData : fallbackCourses
+
+  const [query, setQuery] = useState('')
+  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null)
+  const q = normalize(query.trim())
+  const searching = q.length > 0
+
+  const fCerts = searching
+    ? certs.filter((c) => normalize(`${c.nombre} ${c.empresa ?? ''} ${c.codigo ?? ''}`).includes(q))
+    : certs
+  const fCourses = searching
+    ? courses.filter((c) =>
+        normalize(`${c.nombre} ${c.institucion ?? ''} ${c.descripcion ?? ''}`).includes(q),
+      )
+    : courses
+  const hasResults = fCerts.length > 0 || fCourses.length > 0
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' }, [
     Autoplay({ delay: 3600, stopOnInteraction: false }),
@@ -103,57 +145,117 @@ export function Credentials() {
         description="Aprendizaje constante: certificaciones técnicas verificables y formación continua en backend, arquitectura y DevOps."
       />
 
-      {/* Certifications */}
-      <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {certs.map((c, i) => (
-          <Reveal key={c.id} delay={(i % 3) * 0.08} className="h-full">
-            <CertCard c={c} />
-          </Reveal>
-        ))}
+      {/* Unified search: filters certifications + courses */}
+      <div className="mt-8 max-w-md">
+        <div className="relative">
+          <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-faint" />
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Buscar certificación o curso…"
+            aria-label="Buscar certificaciones y cursos"
+            className="w-full rounded-full border border-white/10 bg-white/5 py-3 pl-10 pr-4 text-sm text-ink outline-none transition-colors duration-200 placeholder:text-faint focus:border-iris/60 focus:bg-white/[0.07]"
+          />
+        </div>
       </div>
 
-      {/* Education carousel */}
-      <div className="mt-20">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <span className="font-mono text-xs uppercase tracking-[0.28em] text-aqua">
-              Aprendizaje continuo
-            </span>
-            <h3 className="mt-2 font-display text-2xl font-semibold text-ink sm:text-3xl">
-              Cursos &amp; formación
-            </h3>
-          </div>
-          <div className="hidden gap-2 sm:flex">
-            <button
-              onClick={prev}
-              aria-label="Anterior"
-              className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/5 text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-iris/50"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              onClick={next}
-              aria-label="Siguiente"
-              className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/5 text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-iris/50"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
-
-        <div className="mt-8 overflow-hidden" ref={emblaRef}>
-          <div className="-ml-4 flex">
-            {courses.map((c) => (
-              <div
-                key={c.id}
-                className="min-w-0 flex-[0_0_85%] pl-4 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
-              >
-                <CourseCard c={c} />
+      {searching ? (
+        hasResults ? (
+          <div className="mt-10 space-y-14">
+            {fCerts.length ? (
+              <div>
+                <h3 className="font-mono text-xs uppercase tracking-[0.28em] text-aqua">
+                  Certificaciones · {fCerts.length}
+                </h3>
+                <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {fCerts.map((c) => (
+                    <CertCard key={c.id} c={c} />
+                  ))}
+                </div>
               </div>
+            ) : null}
+            {fCourses.length ? (
+              <div>
+                <h3 className="font-mono text-xs uppercase tracking-[0.28em] text-aqua">
+                  Cursos · {fCourses.length}
+                </h3>
+                <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {fCourses.map((c) => (
+                    <CourseCard key={c.id} c={c} onOpen={() => setSelectedCourse(c)} />
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </div>
+        ) : (
+          <div className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-10 text-center">
+            <p className="text-muted">No se encontraron resultados para “{query}”.</p>
+            <button
+              onClick={() => setQuery('')}
+              className="mt-3 text-sm text-aqua transition-colors hover:text-iris-soft"
+            >
+              Limpiar búsqueda
+            </button>
+          </div>
+        )
+      ) : (
+        <>
+          {/* Certifications */}
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {certs.map((c, i) => (
+              <Reveal key={c.id} delay={(i % 3) * 0.08} className="h-full">
+                <CertCard c={c} />
+              </Reveal>
             ))}
           </div>
-        </div>
-      </div>
+
+          {/* Education carousel */}
+          <div className="mt-20">
+            <div className="flex items-end justify-between gap-4">
+              <div>
+                <span className="font-mono text-xs uppercase tracking-[0.28em] text-aqua">
+                  Aprendizaje continuo
+                </span>
+                <h3 className="mt-2 font-display text-2xl font-semibold text-ink sm:text-3xl">
+                  Cursos &amp; formación
+                </h3>
+              </div>
+              <div className="hidden gap-2 sm:flex">
+                <button
+                  onClick={prev}
+                  aria-label="Anterior"
+                  className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/5 text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-iris/50"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  onClick={next}
+                  aria-label="Siguiente"
+                  className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/5 text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-iris/50"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+
+            <div className="mt-8 overflow-hidden" ref={emblaRef}>
+              <div className="-ml-4 flex">
+                {courses.map((c) => (
+                  <div
+                    key={c.id}
+                    className="min-w-0 flex-[0_0_85%] pl-4 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
+                  >
+                    <CourseCard c={c} onOpen={() => setSelectedCourse(c)} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
+      <CourseModal course={selectedCourse} onClose={() => setSelectedCourse(null)} />
     </Section>
   )
 }
