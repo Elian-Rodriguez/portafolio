@@ -1,7 +1,7 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
-import { BadgeCheck, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
+import { BadgeCheck, ChevronLeft, ChevronRight, ExternalLink, Search } from 'lucide-react'
 import type { Certification, Course } from '@/lib/contentful-types'
 import { Section } from '@/components/ui/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -10,6 +10,9 @@ import { GlassCard } from '@/components/ui/GlassCard'
 import { useContentful } from '@/hooks/useContentful'
 import { getCertifications, getCourses, cfImage } from '@/lib/contentful'
 import { fallbackCertifications, fallbackCourses } from '@/data/site'
+
+/** Accent + case-insensitive normalize for searching. */
+const normalize = (s: string) => s.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '')
 
 function CertCard({ c }: { c: Certification }) {
   const img = c.imagen?.url ? cfImage(c.imagen.url, { w: 640 }) : undefined
@@ -85,6 +88,15 @@ export function Credentials() {
   const certs = certData.length ? certData : fallbackCertifications
   const courses = courseData.length ? courseData : fallbackCourses
 
+  const [query, setQuery] = useState('')
+  const q = normalize(query.trim())
+  const searching = q.length > 0
+  const filtered = searching
+    ? courses.filter((c) =>
+        normalize(`${c.nombre} ${c.institucion ?? ''} ${c.descripcion ?? ''}`).includes(q),
+      )
+    : courses
+
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' }, [
     Autoplay({ delay: 3600, stopOnInteraction: false }),
   ])
@@ -112,9 +124,9 @@ export function Credentials() {
         ))}
       </div>
 
-      {/* Education carousel */}
+      {/* Education + search */}
       <div className="mt-20">
-        <div className="flex items-end justify-between gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <span className="font-mono text-xs uppercase tracking-[0.28em] text-aqua">
               Aprendizaje continuo
@@ -123,36 +135,76 @@ export function Credentials() {
               Cursos &amp; formación
             </h3>
           </div>
-          <div className="hidden gap-2 sm:flex">
-            <button
-              onClick={prev}
-              aria-label="Anterior"
-              className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/5 text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-iris/50"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              onClick={next}
-              aria-label="Siguiente"
-              className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/5 text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-iris/50"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
+          <div className="flex items-center gap-2">
+            <div className="relative w-full sm:w-64">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-faint" />
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Buscar curso…"
+                aria-label="Buscar cursos y formación"
+                className="w-full rounded-full border border-white/10 bg-white/5 py-2.5 pl-9 pr-4 text-sm text-ink outline-none transition-colors duration-200 placeholder:text-faint focus:border-iris/60 focus:bg-white/[0.07]"
+              />
+            </div>
+            {!searching ? (
+              <div className="hidden gap-2 sm:flex">
+                <button
+                  onClick={prev}
+                  aria-label="Anterior"
+                  className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/5 text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-iris/50"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  onClick={next}
+                  aria-label="Siguiente"
+                  className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/5 text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-iris/50"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
 
-        <div className="mt-8 overflow-hidden" ref={emblaRef}>
-          <div className="-ml-4 flex">
-            {courses.map((c) => (
-              <div
-                key={c.id}
-                className="min-w-0 flex-[0_0_85%] pl-4 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
-              >
-                <CourseCard c={c} />
+        {searching ? (
+          filtered.length ? (
+            <>
+              <p className="mt-6 font-mono text-xs text-faint">
+                {filtered.length} resultado{filtered.length === 1 ? '' : 's'}
+              </p>
+              <div className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {filtered.map((c) => (
+                  <CourseCard key={c.id} c={c} />
+                ))}
               </div>
-            ))}
+            </>
+          ) : (
+            <div className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-10 text-center">
+              <p className="text-muted">No se encontraron cursos para “{query}”.</p>
+              <button
+                onClick={() => setQuery('')}
+                className="mt-3 text-sm text-aqua transition-colors hover:text-iris-soft"
+              >
+                Limpiar búsqueda
+              </button>
+            </div>
+          )
+        ) : (
+          <div className="mt-8 overflow-hidden" ref={emblaRef}>
+            <div className="-ml-4 flex">
+              {courses.map((c) => (
+                <div
+                  key={c.id}
+                  className="min-w-0 flex-[0_0_85%] pl-4 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
+                >
+                  <CourseCard c={c} />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </Section>
   )
