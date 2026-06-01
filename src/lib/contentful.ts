@@ -16,9 +16,8 @@ const environment =
 
 export const isContentfulConfigured = Boolean(space && accessToken)
 
-const client = isContentfulConfigured
-  ? createClient({ space, accessToken, environment })
-  : null
+const client =
+  space && accessToken ? createClient({ space, accessToken, environment }) : null
 
 /** Normalize a Contentful asset into a clean image object (https-safe). */
 function toImage(asset: any): CfImage | undefined {
